@@ -14,17 +14,26 @@ function toggleTheme() {
     updateFooterTheme();
 }
 
-// Function to toggle censoring of "the game"
+// Function to toggle censoring of elements
 function toggleCensor() {
     let censorCheckbox = document.getElementById('censorCheckbox');
-    let gameTitle = document.querySelector('h1');
+    let elementsToCensor = document.querySelectorAll('.censorable');
 
+    elementsToCensor.forEach(element => {
+        if (censorCheckbox.checked) {
+            element.dataset.originalText = element.textContent; // Store original text content
+            element.textContent = '*'.repeat(element.textContent.length); // Replace text with *
+        } else {
+            if (element.dataset.originalText) {
+                element.textContent = element.dataset.originalText; // Restore original text content
+            }
+        }
+    });
+
+    // Save censor preference to localStorage
     if (censorCheckbox.checked) {
-        gameTitle.textContent = gameTitle.textContent.replace(/the game/gi, '****');
-        // Save censor preference to localStorage
         localStorage.setItem('censor', 'on');
     } else {
-        gameTitle.textContent = 'The Game';
         localStorage.setItem('censor', 'off');
     }
 }

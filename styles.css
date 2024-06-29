@@ -338,3 +338,7 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(16px); /* Position of the slider */
 }
+
+.censored {
+    filter: blur(5px); /* Example: Blur the text */
+}
