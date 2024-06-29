@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="game-title">The Game</h1>
+        
+        <!-- Theme and Censor Toggles -->
+        <div class="toggle-container">
+            <label for="themeCheckbox" class="theme-label">Theme</label>
+            <label class="theme-switch">
+                <input type="checkbox" id="themeCheckbox">
+                <div class="slider"></div>
+            </label>
+            
+            <label for="censorCheckbox" class="theme-label">Censor</label>
+            <label class="censor-switch">
+                <input type="checkbox" id="censorCheckbox">
+                <div class="slider"></div>
+            </label>
+        </div>
+        
+        <!-- Button, Timer, and History List -->
+        <button id="gameButton">Remember "The Game"</button>
+        <div id="timer">Timer: 0 days 0 hours 0 minutes</div>
+        <ul id="historyList">
+            <!-- History items will be dynamically added here -->
+        </ul>
+    </div>
+    
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

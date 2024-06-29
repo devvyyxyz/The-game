@@ -1,0 +1,203 @@
+/* Default (Light) Theme */
+:root {
+    --bg-color-light: #ffffff; /* Light background color */
+    --text-color-light: #333333; /* Dark text color */
+    --button-bg-color-light: #4CAF50; /* Button background color in light mode */
+    --button-text-color-light: #ffffff; /* Button text color in light mode */
+    --toggle-bg-light: #FFEB3B; /* Toggle background color in light mode */
+    --toggle-slider-light: #FFFFFF; /* Toggle slider color in light mode */
+    --scrollbar-color-light: #ccc; /* Scrollbar color in light mode */
+    --censor-toggle-on: #FFEB3B; /* Censor toggle color when on (yellow) */
+    --censor-toggle-off: #FF5722; /* Censor toggle color when off (red) */
+    --game-title-font-size: 36px; /* Game title font size in light mode */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.container {
+    text-align: center;
+    max-width: 90%; /* Limit container width for better readability on large screens */
+    margin: 0 auto; /* Center container horizontally */
+    padding: 20px; /* Add padding around content */
+}
+
+.game-title {
+    font-size: var(--game-title-font-size); /* Set game title font size */
+    margin-bottom: 20px; /* Add some space below the title */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: var(--button-bg-color-light);
+    color: var(--button-text-color-light);
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Darken button color on hover */
+}
+
+#timer {
+    font-size: 18px; /* Reduce font size for timer on mobile */
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow-y: scroll;
+    max-height: 300px;
+    margin-top: 10px;
+}
+
+li {
+    margin-top: 10px;
+}
+
+.toggle-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch,
+.censor-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.theme-switch input,
+.censor-switch input {
+    display: none;
+}
+
+.theme-switch .slider,
+.censor-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.theme-switch .slider:before,
+.censor-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--toggle-slider-light);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.theme-switch input:checked + .slider {
+    background-color: #1976D2; /* Dark blue toggle background color when checked (dark mode) */
+}
+
+.theme-switch input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+.censor-switch input:checked + .slider {
+    background-color: var(--censor-toggle-on); /* Yellow toggle background color when checked (censor on) */
+}
+
+.censor-switch input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+.censor-switch .slider {
+    background-color: var(--censor-toggle-off); /* Red toggle background color when off (censor off) */
+}
+
+.censor-switch .slider:before {
+    background-color: #fff; /* White toggle slider color */
+}
+
+/* Dark Theme */
+:root {
+    --bg-color-dark: #37474F; /* Dark background color */
+    --text-color-dark: #ffffff; /* Light text color */
+    --button-bg-color-dark: #2196F3; /* Button background color in dark mode */
+    --button-text-color-dark: #ffffff; /* Button text color in dark mode */
+    --toggle-bg-dark: #1976D2; /* Toggle background color in dark mode */
+    --toggle-slider-dark: #BBDEFB; /* Toggle slider color in dark mode */
+    --scrollbar-color-dark: #555; /* Scrollbar color in dark mode */
+}
+
+body.dark-theme {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+button {
+    background-color: var(--button-bg-color-light); /* Default to light mode button background */
+    color: var(--button-text-color-light); /* Default to light mode button text color */
+}
+
+button:hover {
+    background-color: #1976D2; /* Darken button color on hover in dark mode */
+}
+
+.theme-switch .slider,
+.censor-switch .slider {
+    background-color: var(--toggle-bg-light); /* Default to light mode toggle background */
+}
+
+.theme-switch .slider:before,
+.censor-switch .slider:before {
+    background-color: var(--toggle-slider-light); /* Default to light mode toggle slider color */
+}
+
+body.dark-theme .theme-switch .slider,
+body.dark-theme .censor-switch .slider {
+    background-color: var(--toggle-bg-dark); /* Dark mode toggle background */
+}
+
+body.dark-theme .theme-switch .slider:before,
+body.dark-theme .censor-switch .slider:before {
+    background-color: var(--toggle-slider-dark); /* Dark mode toggle slider color */
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color-light); /* Default to light mode scrollbar color */
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-color-dark); /* Dark mode scrollbar color */
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
