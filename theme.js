@@ -43,6 +43,17 @@ function updateFooterTheme() {
     }
 }
 
+// Event listener for special theme toggle
+document.getElementById('specialToggle').addEventListener('change', function() {
+    toggleSpecialTheme();
+});
+
+// Function to toggle special theme
+function toggleSpecialTheme() {
+    let body = document.body;
+    body.classList.toggle('special-theme');
+}
+
 // Event listener for theme toggle
 document.getElementById('themeCheckbox').addEventListener('change', function() {
     toggleTheme();

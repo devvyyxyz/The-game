@@ -2,13 +2,13 @@
 :root {
     --bg-color-light: #ffffff; /* Light background color */
     --text-color-light: #333333; /* Dark text color */
-    --button-bg-color-light: #4CAF50; /* Button background color in light mode */
+    --button-bg-color-light: #333333; /* Button background color in light mode */
     --button-text-color-light: #ffffff; /* Button text color in light mode */
-    --toggle-bg-light: #FFEB3B; /* Toggle background color in light mode */
-    --toggle-slider-light: #FFFFFF; /* Toggle slider color in light mode */
+    --toggle-bg-light: #cccccc; /* Toggle background color in light mode */
+    --toggle-slider-light: #ffffff; /* Toggle slider color in light mode */
     --scrollbar-color-light: #ccc; /* Scrollbar color in light mode */
-    --censor-toggle-on: #FFEB3B; /* Censor toggle color when on (yellow) */
-    --censor-toggle-off: #FF5722; /* Censor toggle color when off (red) */
+    --censor-toggle-on: #cccccc; /* Censor toggle color when on */
+    --censor-toggle-off: #999999; /* Censor toggle color when off */
     --game-title-font-size: 36px; /* Game title font size in light mode */
 }
 
@@ -50,7 +50,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* Darken button color on hover */
+    background-color: #555; /* Darken button color on hover */
 }
 
 #timer {
@@ -103,6 +103,7 @@ li {
     bottom: 0;
     transition: .4s;
     border-radius: 24px;
+    background-color: #ccc; /* Default toggle background color */
 }
 
 .theme-switch .slider:before,
@@ -119,7 +120,7 @@ li {
 }
 
 .theme-switch input:checked + .slider {
-    background-color: #1976D2; /* Dark blue toggle background color when checked (dark mode) */
+    background-color: #333; /* Darker toggle background color when checked */
 }
 
 .theme-switch input:checked + .slider:before {
@@ -127,7 +128,7 @@ li {
 }
 
 .censor-switch input:checked + .slider {
-    background-color: var(--censor-toggle-on); /* Yellow toggle background color when checked (censor on) */
+    background-color: var(--censor-toggle-on); /* Light grey toggle background color when checked (censor on) */
 }
 
 .censor-switch input:checked + .slider:before {
@@ -135,7 +136,7 @@ li {
 }
 
 .censor-switch .slider {
-    background-color: var(--censor-toggle-off); /* Red toggle background color when off (censor off) */
+    background-color: var(--censor-toggle-off); /* Dark grey toggle background color when off (censor off) */
 }
 
 .censor-switch .slider:before {
@@ -144,12 +145,12 @@ li {
 
 /* Dark Theme */
 :root {
-    --bg-color-dark: #37474F; /* Dark background color */
+    --bg-color-dark: #333333; /* Dark background color */
     --text-color-dark: #ffffff; /* Light text color */
-    --button-bg-color-dark: #2196F3; /* Button background color in dark mode */
+    --button-bg-color-dark: #666666; /* Button background color in dark mode */
     --button-text-color-dark: #ffffff; /* Button text color in dark mode */
-    --toggle-bg-dark: #1976D2; /* Toggle background color in dark mode */
-    --toggle-slider-dark: #BBDEFB; /* Toggle slider color in dark mode */
+    --toggle-bg-dark: #999999; /* Toggle background color in dark mode */
+    --toggle-slider-dark: #cccccc; /* Toggle slider color in dark mode */
     --scrollbar-color-dark: #555; /* Scrollbar color in dark mode */
 }
 
@@ -164,7 +165,7 @@ button {
 }
 
 button:hover {
-    background-color: #1976D2; /* Darken button color on hover in dark mode */
+    background-color: #666; /* Darken button color on hover in dark mode */
 }
 
 .theme-switch .slider,
@@ -260,4 +261,80 @@ footer {
 .sorting-options select option:checked {
     background-color: #e0e0e0; /* Background color when option is selected */
     font-weight: bold; /* Bold font for selected option */
+}
+
+/* Special (Gay Pride) Theme */
+body.special-theme {
+    background: linear-gradient(to right, #000000, #ffffff, #888888); /* Black, white, and grey gradient */
+    background-size: 1400% 100%; /* Adjust the size as needed */
+    animation: rainbow-bg 10s ease infinite;
+    color: white; /* Text color for visibility */
+}
+
+@keyframes rainbow-bg {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* Special toggle position */
+.toggle-container.special-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Hide toggle labels */
+.toggle-label {
+    margin-left: 10px;
+    display: none; /* Hide by default */
+}
+
+/* Toggle styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #333; /* Darker toggle background color when checked */
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px); /* Position of the slider */
 }
