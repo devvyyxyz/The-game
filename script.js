@@ -1,7 +1,8 @@
-// Initialize global variables for timer
+// Initialize global variables for timer and history
 let startTime;
 let elapsedTime = 0;
 let timerInterval;
+let historyList = [];
 
 // Function to start the timer
 function startTimer() {
@@ -39,7 +40,6 @@ function handleRememberClick() {
     let duration = elapsedTime;
 
     // Update history list
-    let historyList = JSON.parse(localStorage.getItem('gameHistory')) || [];
     let newItem = {
         date: now,
         duration: duration
@@ -81,12 +81,40 @@ function updateHistoryList(historyList) {
     });
 }
 
+// Function to sort history list based on selected option
+function sortHistoryList(option) {
+    switch (option) {
+        case 'dateDesc':
+            historyList.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
+        case 'dateAsc':
+            historyList.sort((a, b) => new Date(a.date) - new Date(b.date));
+            break;
+        case 'durationDesc':
+            historyList.sort((a, b) => b.duration - a.duration);
+            break;
+        case 'durationAsc':
+            historyList.sort((a, b) => a.duration - b.duration);
+            break;
+        default:
+            return;
+    }
+
+    updateHistoryList(historyList);
+}
+
 // Event listener for button click
 document.getElementById('gameButton').addEventListener('click', handleRememberClick);
 
+// Event listener for sorting dropdown change
+document.getElementById('sortDropdown').addEventListener('change', function() {
+    let selectedOption = this.value;
+    sortHistoryList(selectedOption);
+});
+
 // On page load, fetch and display stored history and start timer
 document.addEventListener('DOMContentLoaded', function() {
-    let historyList = JSON.parse(localStorage.getItem('gameHistory')) || [];
+    historyList = JSON.parse(localStorage.getItem('gameHistory')) || [];
     updateHistoryList(historyList);
     startTimer();
 });

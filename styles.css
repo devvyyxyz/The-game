@@ -15,9 +15,9 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column; /* Ensure footer stays at the bottom */
+    justify-content: space-between; /* Push content to top and footer to bottom */
+    min-height: 100vh; /* Ensure full height even if content is small */
     margin: 0;
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
@@ -64,10 +64,12 @@ ul {
     overflow-y: scroll;
     max-height: 300px;
     margin-top: 10px;
+    text-align: right; /* Align text to the right */
 }
 
 li {
     margin-top: 10px;
+    text-align: left; /* Reset text alignment for list items */
 }
 
 .toggle-container {
@@ -200,4 +202,62 @@ body.dark-theme ::-webkit-scrollbar-thumb {
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    position: relative;
+    z-index: 10;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Light Mode Footer */
+.light-theme footer {
+    background-color: #f0f0f0; /* Light background color for footer */
+    color: #333; /* Dark text color for footer */
+}
+
+/* Dark Mode Footer */
+.dark-theme footer {
+    background-color: #222; /* Dark background color for footer */
+    color: #ddd; /* Light text color for footer */
+}
+
+
+.sorting-options {
+    margin-top: 20px;
+    text-align: center; /* Center align sorting options */
+}
+
+.sorting-options label {
+    margin-right: 10px;
+}
+
+.sorting-options select {
+    padding: 8px; /* Adjust padding for better appearance */
+    font-size: 14px;
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add border radius */
+    background-color: #f9f9f9; /* Light background color */
+    color: #333; /* Dark text color */
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.sorting-options select:hover,
+.sorting-options select:focus {
+    border-color: #aaa; /* Darken border on hover/focus */
+}
+
+.sorting-options select option {
+    background-color: #fff; /* White background for options */
+    color: #333; /* Dark text color for options */
+}
+
+.sorting-options select option:checked {
+    background-color: #e0e0e0; /* Background color when option is selected */
+    font-weight: bold; /* Bold font for selected option */
 }

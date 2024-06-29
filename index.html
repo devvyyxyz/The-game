@@ -28,10 +28,26 @@
         <!-- Button, Timer, and History List -->
         <button id="gameButton">Remember "The Game"</button>
         <div id="timer">Timer: 0 days 0 hours 0 minutes</div>
-        <ul id="historyList">
+        <ul id="historyList" class="history-list">
             <!-- History items will be dynamically added here -->
         </ul>
+
+        <!-- Sorting Options -->
+        <div class="sorting-options">
+            <label for="sortDropdown">Sort by:</label>
+            <select id="sortDropdown">
+                <option value="dateDesc">Date (Newest First)</option>
+                <option value="dateAsc">Date (Oldest First)</option>
+                <option value="durationDesc">Duration (Longest First)</option>
+                <option value="durationAsc">Duration (Shortest First)</option>
+            </select>
+        </div>
     </div>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <p>Made with ❤️ by <a href="https://github.com/devvyyxyz" target="_blank">devvyyxyz</a></p>
+    </footer>
     
     <script src="theme.js"></script>
     <script src="script.js"></script>
