@@ -62,7 +62,7 @@ ul {
     list-style-type: none;
     padding: 0;
     overflow-y: scroll;
-    max-height: 300px;
+    max-height: 400px;
     margin-top: 10px;
     text-align: right; /* Align text to the right */
 }
