@@ -9,7 +9,7 @@
     --scrollbar-color-light: #ccc; /* Scrollbar color in light mode */
     --censor-toggle-on: #cccccc; /* Censor toggle color when on */
     --censor-toggle-off: #999999; /* Censor toggle color when off */
-    --game-title-font-size: 36px; /* Game title font size in light mode */
+    --game-title-font-size: 100px; /* Game title font size in light mode */
 }
 
 body {
@@ -22,14 +22,16 @@ body {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
     transition: background-color 0.3s ease, color 0.3s ease;
-    overflow: hidden; /* Hide scrollbars */
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 .container {
     text-align: center;
-    max-width: 90%; /* Limit container width for better readability on large screens */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%; /* Full width on all devices */
+    max-width: 800px; /* Limit container width for better readability */
     margin: 0 auto; /* Center container horizontally */
-    padding: 20px; /* Add padding around content */
 }
 
 .game-title {
@@ -61,8 +63,8 @@ button:hover {
 ul {
     list-style-type: none;
     padding: 0;
-    overflow-y: scroll;
-    max-height: 400px;
+    overflow-y: auto; /* Auto scroll on overflow */
+    max-height: 300px; /* Limit max height for smaller screens */
     margin-top: 10px;
     text-align: right; /* Align text to the right */
 }
@@ -341,4 +343,31 @@ input:checked + .slider:before {
 
 .censored {
     filter: blur(5px); /* Example: Blur the text */
+}
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 600px) {
+    .game-title {
+        font-size: 24px; /* Reduce game title font size on smaller screens */
+    }
+
+    button {
+        font-size: 14px; /* Reduce button font size on smaller screens */
+    }
+
+    #timer {
+        font-size: 16px; /* Reduce timer font size on smaller screens */
+    }
+
+    ul {
+        max-height: 200px; /* Reduce max height for history list on smaller screens */
+    }
+
+    .container {
+        padding: 10px; /* Adjust container padding on smaller screens */
+    }
+
+    .sorting-options select {
+        font-size: 12px; /* Reduce font size for sorting options on smaller screens */
+    }
 }
