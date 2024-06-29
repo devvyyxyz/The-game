@@ -103,6 +103,15 @@ function sortHistoryList(option) {
     updateHistoryList(historyList);
 }
 
+// Function to clear the history with confirmation
+function clearHistory() {
+    if (confirm('Are you sure you want to clear your game history?')) {
+        historyList = []; // Clear history list array
+        localStorage.removeItem('gameHistory'); // Remove history from localStorage
+        updateHistoryList(historyList); // Update UI to reflect cleared history
+    }
+}
+
 // Event listener for button click
 document.getElementById('gameButton').addEventListener('click', handleRememberClick);
 
@@ -111,6 +120,9 @@ document.getElementById('sortDropdown').addEventListener('change', function() {
     let selectedOption = this.value;
     sortHistoryList(selectedOption);
 });
+
+// Event listener for clear history button
+document.getElementById('clearHistoryButton').addEventListener('click', clearHistory);
 
 // On page load, fetch and display stored history and start timer
 document.addEventListener('DOMContentLoaded', function() {
