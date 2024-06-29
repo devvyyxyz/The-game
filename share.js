@@ -33,8 +33,7 @@ function captureAndShareStats() {
         if (navigator.share) {
             navigator.share({
                 title: 'Game Stats',
-                text: `Highest Time: ${highestTime}, Lowest Time: ${lowestTime}`,
-                url: image
+                text: `Highest Time: ${highestTime}\nLowest Time: ${lowestTime}`
             }).then(() => {
                 console.log('Shared successfully');
             }).catch((error) => {
