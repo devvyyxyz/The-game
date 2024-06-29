@@ -36,12 +36,11 @@ function handleRememberClick() {
     clearInterval(timerInterval); // Stop the timer
 
     // Calculate duration since last "remembered"
-    let now = new Date().toLocaleString();
     let duration = elapsedTime;
 
     // Update history list
     let newItem = {
-        date: now,
+        timestamp: new Date().getTime(), // Use timestamp for sorting
         duration: duration
     };
     historyList.unshift(newItem); // Add new item at the beginning
@@ -76,7 +75,8 @@ function updateHistoryList(historyList) {
 
     historyList.forEach(item => {
         let listItem = document.createElement('li');
-        listItem.textContent = `On ${item.date} you went ${formatElapsedTime(item.duration)} without the game`;
+        let date = new Date(item.timestamp).toLocaleString(); // Convert timestamp to readable date
+        listItem.textContent = `On ${date} you went ${formatElapsedTime(item.duration)} without the game`;
         historyListElement.appendChild(listItem);
     });
 }
@@ -85,10 +85,10 @@ function updateHistoryList(historyList) {
 function sortHistoryList(option) {
     switch (option) {
         case 'dateDesc':
-            historyList.sort((a, b) => new Date(b.date) - new Date(a.date));
+            historyList.sort((a, b) => b.timestamp - a.timestamp);
             break;
         case 'dateAsc':
-            historyList.sort((a, b) => new Date(a.date) - new Date(b.date));
+            historyList.sort((a, b) => a.timestamp - b.timestamp);
             break;
         case 'durationDesc':
             historyList.sort((a, b) => b.duration - a.duration);
